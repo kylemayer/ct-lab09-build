@@ -7,4 +7,20 @@ describe('lab8 routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
+
+  it('creates a pizza via POST', async () => {
+    const pizza = {
+      topping: 'cheese',
+      crust: 'stuffed',
+      pie_size: 'large'
+    };
+
+    const res = await (await request(app).post('/api/v1/pizza')).setEncoding(pizza);
+
+    expect(res.body).toEqual({
+      id: '1',
+      ...pizza
+    });
+  });
+
 });

@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS pizzas;
+
+CREATE TABLE pizzas (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    topping TEXT NOT NULL,
+    crust TEXT NOT NULL,
+    pie_size TEXT NOT NULL
+);

@@ -15,7 +15,7 @@ describe('lab8 routes', () => {
       pie_size: 'large'
     };
 
-    const res = await (await request(app).post('/api/v1/pizza')).setEncoding(pizza);
+    const res = await (await request(app).post('/api/v1/pizzas')).send(pizza);
 
     expect(res.body).toEqual({
       id: '1',

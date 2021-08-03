@@ -74,4 +74,17 @@ describe('lab8 routes', () => {
     expect(res.body).toEqual({ ...pizza, pieSize: 'extra-large' });
   });
 
+  it('deletes a pizza by id via DELETE', async () => {
+    const pizza = await Pizza.insert({
+      topping: 'cheese',
+      crust: 'stuffed',
+      pieSize: 'large'
+    });
+
+    const res = await request(app)
+      .delete(`/api/v1/pizzas/${pizza.id}`);
+
+    expect(res.body).toEqual({ message: `${pizza.id} has been deleted` });
+  });
+
 });

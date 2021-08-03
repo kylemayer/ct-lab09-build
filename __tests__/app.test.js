@@ -12,11 +12,11 @@ describe('lab8 routes', () => {
     const pizza = {
       topping: 'cheese',
       crust: 'stuffed',
-      pie_size: 'large'
+      pieSize: 'large'
     };
 
     const res = await request(app).post('/api/v1/pizzas').send(pizza);
-
+    console.log(res.body);
     expect(res.body).toEqual({
       id: '1',
       ...pizza

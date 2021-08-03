@@ -37,4 +37,27 @@ describe('lab8 routes', () => {
     expect(res.body).toEqual(pizza);
   });
 
+  it('gets all pizzas via GET', async () => {
+    const cheesePizza = await Pizza.insert({
+      topping: 'cheese',
+      crust: 'stuffed',
+      pieSize: 'large'
+    });
+    const peppPizza = await Pizza.insert({
+      topping: 'pepperoni',
+      crust: 'thick',
+      pieSize: 'small'
+    });
+    const sausagePizza = await Pizza.insert({
+      topping: 'sausage',
+      crust: 'thin',
+      pieSize: 'medium'
+    });
+
+    const res = await request(app)
+      .get('/api/v1/pizzas/');
+
+    expect(res.body).toEqual([cheesePizza, peppPizza, sausagePizza]);
+  });
+
 });

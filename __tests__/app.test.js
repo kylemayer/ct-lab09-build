@@ -60,4 +60,18 @@ describe('lab8 routes', () => {
     expect(res.body).toEqual([cheesePizza, peppPizza, sausagePizza]);
   });
 
+  it('updates a pizza by id via PUT', async () => {
+    const pizza = await Pizza.insert({
+      topping: 'cheese',
+      crust: 'stuffed',
+      pieSize: 'large'
+    });
+
+    const res = await request(app)
+      .put(`/api/v1/pizzas/${pizza.id}`)
+      .send({ pieSize: 'extra-large' });
+
+    expect(res.body).toEqual({ ...pizza, pieSize: 'extra-large' });
+  });
+
 });

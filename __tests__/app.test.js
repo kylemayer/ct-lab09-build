@@ -2,6 +2,7 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
+const Pizza = require('../lib/models/Pizza');
 
 describe('lab8 routes', () => {
   beforeEach(() => {
@@ -21,6 +22,19 @@ describe('lab8 routes', () => {
       id: '1',
       ...pizza
     });
+  });
+
+  it('gets a single pizza by id via GET', async () => {
+    const pizza = await Pizza.insert({
+      topping: 'cheese',
+      crust: 'stuffed',
+      pieSize: 'large'
+    });
+
+    const res = await request(app)
+      .get(`/api/v1/pizzas/${pizza.id}`);
+
+    expect(res.body).toEqual(pizza);
   });
 
 });

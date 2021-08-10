@@ -2,7 +2,7 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
-const Pizza = require('../lib/models/Pizza');
+const Pizza = require('../lib/models/Pizza.js');
 
 describe('lab8 routes', () => {
   beforeEach(() => {

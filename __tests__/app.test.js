@@ -1,7 +1,7 @@
-const pool = require('../lib/utils/pool');
-const setup = require('../data/setup');
+const pool = require('../lib/utils/pool.js');
+const setup = require('../data/setup.js');
 const request = require('supertest');
-const app = require('../lib/app');
+const app = require('../lib/app.js');
 const Pizza = require('../lib/models/Pizza.js');
 
 describe('lab8 routes', () => {
